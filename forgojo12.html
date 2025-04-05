@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satoru Gojo - The Perfect Character</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            animation: slideInDown 1s ease-out;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-out;
+            transform: translateY(20px);
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .section:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+        
+        .section:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+        
+        .section:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+        
+        .section:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+        
+        .section-title {
+            color: #6b73ff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #6b73ff;
+            padding-bottom: 0.5rem;
+            position: relative;
+            animation: slideInLeft 1.2s ease-out;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            animation: lineGrow 2s ease-out forwards;
+            animation-delay: 1.2s;
+        }
+        
+        .section-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .image-container {
+            flex: 0 0 300px;
+            height: 300px;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        .image-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(107, 115, 255, 0.4);
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+        
+        .text-content {
+            flex: 1;
+        }
+        
+        .text-content p {
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .feature-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .feature-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .feature-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .feature-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, #6b73ff, #000dff);
+            transition: height 0.5s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card:hover::before {
+            height: 100%;
+        }
+        
+        .feature-title {
+            color: #6b73ff;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .feature-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #6b73ff;
+            transition: width 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-title::after {
+            width: 100%;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #2c2c2c 0%, #3c3c3c 100%);
+            border-left: 4px solid #6b73ff;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 80px;
+            color: rgba(107, 115, 255, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .video-container {
+            flex: 0 0 300px;
+            height: 300px;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            display: inline-block;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .contact-item {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-item span {
+            margin-left: 0.5rem;
+        }
+        
+        .credit {
+            color: #888;
+            font-size: 0.9rem;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(107, 115, 255, 0.3);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            from {
+                box-shadow: 0 0 0 rgba(107, 115, 255, 0.4);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(107, 115, 255, 0.7);
+            }
+        }
+        
+        @keyframes lineGrow {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="floating-particles">
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const particles = document.querySelector('.floating-particles');
+                    for (let i = 0; i < 20; i++) {
+                        createParticle(particles);
+                    }
+                });
+                
+                function createParticle(container) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random position
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100 + 100;
+                    
+                    // Random size
+                    const size = Math.random() * 15 + 5;
+                    
+                    // Random animation duration
+                    const duration = Math.random() * 20 + 10;
+                    
+                    // Random animation delay
+                    const delay = Math.random() * 10;
+                    
+                    // Apply styles
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.animationDuration = `${duration}s`;
+                    particle.style.animationDelay = `${delay}s`;
+                    
+                    container.appendChild(particle);
+                }
+            </script>
+        </div>
+        <div class="header-content">
+            <h1>Satoru Gojo</h1>
+            <p class="subtitle">The Perfect Character of Jujutsu Kaisen</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">The Strongest Sorcerer</h2>
+            <div class="section-content">
+                <div class="image-container">
+                    <img src="gojo.jpg" alt="Satoru Gojo" />
+                </div>
+                <div class="text-content">
+                    <p>Satoru Gojo stands as the pinnacle of strength in the world of Jujutsu Kaisen. As the strongest jujutsu sorcerer of his era, he embodies the perfect balance of overwhelming power and strategic intellect. His mastery of cursed energy transcends conventional understanding, allowing him to execute techniques that most sorcerers could only dream of achieving.</p>
+                    
+                    <div class="quote-box">
+                        "Throughout heaven and earth, I alone am the honored one."
+                    </div>
+                    
+                    <p>What makes Gojo truly exceptional is not merely his raw power, but his intricate understanding of the abstract concepts that govern jujutsu sorcery. His ability to manipulate space and time through his "Limitless" technique showcases the depth of his capabilities, establishing him as both an untouchable defender and an unstoppable force.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Beyond Power: The Complete Character</h2>
+            <p>Gojo's appeal extends far beyond his combat abilities. His character represents a masterful blend of elements that create a compelling, multidimensional figure beloved by fans worldwide.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">Limitless Technique</h3>
+                    <p>At the core of Gojo's abilities is the "Limitless" technique, which grants him control over space. By creating an "infinity" barrier around him, Gojo can slow down or completely stop attacks, making him nearly untouchable in combat.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3 class="feature-title">Unlimited Void</h3>
+                    <p>His Domain Expansion, "Unlimited Void," is perhaps the most powerful in the series. Within this domain, opponents are overwhelmed with an infinite amount of information, paralyzing them with sensory overload.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3 class="feature-title">Charismatic Personality</h3>
+                    <p>Gojo's personality is a refreshing mix of arrogance, humor, and charm. His confident attitude is never without a dose of lightheartedness, often punctuated with witty remarks that endear him to fans.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3 class="feature-title">Mentor and Visionary</h3>
+                    <p>Beyond his combat skills, Gojo is a dedicated teacher and mentor. His role in shaping the next generation of sorcerers is pivotal, challenging outdated traditions and systems to create a more progressive future.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Iconic Design</h2>
+            <div class="section-content">
+                <div class="text-content">
+                    <p>Visually, Gojo is instantly recognizable with his striking white hair and piercing blue eyes, which are often concealed behind a signature blindfold or dark glasses. This look not only adds to his mysterious allure but also symbolizes the hidden depths of his abilities.</p>
+                    
+                    <p>His attire is both modern and practical, reinforcing his image as a formidable and contemporary warrior. Every element of his design serves both aesthetic and narrative purposes, making him one of the most visually striking characters in modern anime.</p>
+                    
+                    <p>In many ways, Gojo is seen as the ideal teacher and warrior—a character who combines overwhelming power with a progressive mindset, making him a role model within the series. His ability to effortlessly blend strength, intelligence, humor, and empathy is what makes him nearly "perfect" in the eyes of fans.</p>
+                </div>
+                <div class="video-container">
+                    <video autoplay loop muted>
+                        <source src="gojo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Cultural Impact</h2>
+            <p>Gojo's character has transcended the series to become a cultural icon among anime enthusiasts. His catchphrases, battle scenes, and memorable quotes have sparked discussions, memes, and extensive fan art, cementing his status as one of the most influential characters in modern anime culture.</p>
+            
+            <p>Within Jujutsu Kaisen, Gojo's presence shifts the balance of power. His interventions in battles and strategic decisions often redefine the stakes, injecting fresh energy into the storyline. His complex relationships with both allies and adversaries add layers of intrigue and emotional depth to the narrative.</p>
+            
+            <div class="quote-box">
+                "The only one who can defeat me is me."
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6b73ff" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+                </svg>
+                <span>Telegram: @N77_1</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#6b73ff" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+                </svg>
+                <span>Bot: @Sufix1x_bot</span>
+            </div>
+        </div>
+        <p class="credit">Inspired by Jujutsu Kaisen by Gege Akutami</p>
+    </footer>
+    
+    <script>
+        // Intersection Observer to trigger animations when elements come into view
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
+</qodoArtifact>
